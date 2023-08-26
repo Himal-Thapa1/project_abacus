@@ -58,6 +58,76 @@ class _homeScreenState extends State<homeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   calcbutton('AC', Colors.grey, black),
+                  calcbutton('+/-', Colors.grey, black),
+                  calcbutton('%', Colors.grey, black),
+                  calcbutton('/', accentColor, white),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              //
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  calcbutton('7', Colors.grey, black),
+                  calcbutton('8', Colors.grey, black),
+                  calcbutton('9', Colors.grey, black),
+                  calcbutton('X', accentColor, white),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  calcbutton('4', Colors.grey, black),
+                  calcbutton('5', Colors.grey, black),
+                  calcbutton('6', Colors.grey, black),
+                  calcbutton('-', accentColor, white),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  calcbutton('1', Colors.grey, black),
+                  calcbutton('2', Colors.grey, black),
+                  calcbutton('3', Colors.grey, black),
+                  calcbutton('+', accentColor, white),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      //later wii add the function
+                    },
+                    child: Text(
+                      "0",
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: white,
+                        
+                      ),
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(Colors.grey),
+                      shape: MaterialStatePropertyAll(StadiumBorder()),
+                      padding: MaterialStatePropertyAll(
+                          EdgeInsets.fromLTRB(30, 14, 128, 14)),
+                    ),
+                  ),
+                  calcbutton('.', Colors.grey, white),
+                  calcbutton("=", Colors.grey, white),
                 ],
               )
             ],

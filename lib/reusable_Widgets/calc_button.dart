@@ -9,7 +9,7 @@ Widget calcbutton(String btntxt, Color btncolor, Color txtcolor) {
       child: Text(
         btntxt,
         style: TextStyle(
-          fontSize: 35,
+          fontSize: 30,
           color: txtcolor,
         ),
       ),
@@ -17,7 +17,7 @@ Widget calcbutton(String btntxt, Color btncolor, Color txtcolor) {
         // backgroundColor: btncolor,
         backgroundColor: MaterialStatePropertyAll<Color>(btncolor),
         shape: MaterialStatePropertyAll(CircleBorder()),
-        padding: MaterialStatePropertyAll(EdgeInsets.all(20)),
+        padding: MaterialStatePropertyAll(EdgeInsets.all(15)),
       ),
     ),
   );

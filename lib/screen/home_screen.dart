@@ -35,24 +35,36 @@ class _homeScreenState extends State<homeScreen> {
           padding: EdgeInsets.symmetric(horizontal: 5),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               //
               SingleChildScrollView(
                 scrollDirection: Axis.vertical,
-                child: Row(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Padding(padding: EdgeInsets.all(10.0)),
                     Text(
-                      "0",
-                      textAlign: TextAlign.left,
+                      "Input",
+                      textAlign: TextAlign.right,
                       style: TextStyle(
                         color: white,
-                        fontSize: 90,
+                        fontSize: 40,
+                      ),
+                    ),
+                    Text(
+                      "Output",
+                      style: TextStyle(
+                        color: white,
+                        fontSize: 40,
                       ),
                     ),
                   ],
                 ),
+              ),
+              SizedBox(
+                height: 5,
               ),
               Divider(
                 color: white,
@@ -61,7 +73,9 @@ class _homeScreenState extends State<homeScreen> {
                 indent: 25,
                 endIndent: 25,
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -124,7 +138,6 @@ class _homeScreenState extends State<homeScreen> {
                       style: TextStyle(
                         fontSize: 30,
                         color: white,
-                        
                       ),
                     ),
                     style: ButtonStyle(

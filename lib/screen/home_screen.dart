@@ -54,6 +54,14 @@ class _homeScreenState extends State<homeScreen> {
                   ],
                 ),
               ),
+              Divider(
+                color: white,
+                height: 10,
+                thickness: 5,
+                indent: 25,
+                endIndent: 25,
+              ),
+              SizedBox(height: 10,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

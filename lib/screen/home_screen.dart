@@ -48,15 +48,22 @@ class _homeScreenState extends State<homeScreen> {
     } else if (value == "=") {
       if (!hasError) {
         output = _calculatorBrain.calculate(input);
-<<<<<<<<< Temporary merge branch 1
-      } 
-  else {
-=========
       } else {
->>>>>>>>> Temporary merge branch 2
-        input += value;
+        output = "Error"; // Show error message in output
       }
-    });
+      hasError = false; // Reset error state
+    } else {
+      // Check for consecutive operators
+      if (value == "+" || value == "-" || value == "*" || value == "/") {
+        if (input.isEmpty || "+-*/".contains(input[input.length - 1])) {
+          hasError = true;
+          return;
+        }
+      }
+      input += value;
+      hasError = false; // Reset error state
+    }
+  });
   }
 
   @override

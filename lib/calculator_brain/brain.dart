@@ -35,12 +35,26 @@ class CalculatorBrain {
   String calculate(String input) {
         // Replace 'X' with '*' for multiplication
     String processedInput = input.replaceAll("x", "*");
-    double result = _evaluateExpression(processedInput);
+    double result;
+  try {
+    result = _evaluateExpression(processedInput);
+  } catch (e) {
+    // Handle division by zero
+    return "∞";
+  }
 
+ if (result.isFinite) {
     if (result == result.toInt()) {
       return result.toInt().toString();
     } else {
-      return result.toStringAsFixed(2);
+      String formattedResult = result.toStringAsFixed(10); // Display up to 10 digits
+      formattedResult = formattedResult.replaceAll(RegExp(r'0+$'), ''); // Trim trailing zeros
+      formattedResult = formattedResult.replaceAll(RegExp(r'\.$'), ''); // Remove trailing decimal point if no decimals left
+
+      return formattedResult;
     }
+  } else {
+    return "∞"; // Return infinity symbol for non-finite results
+  }
   }
 }

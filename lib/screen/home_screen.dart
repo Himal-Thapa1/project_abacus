@@ -20,21 +20,6 @@ class _homeScreenState extends State<homeScreen> {
   bool hasError = false;
 
   void onButtonClick(String value) {
-  //   setState(() {
-  //     if (value == "AC") {
-  //       input = "";
-  //       output = "";
-  //     } else if (value == "<") {
-  //       if (input.isNotEmpty) {
-  //         input = input.substring(0, input.length - 1);
-  //       }
-  //     } else if (value == "=") {
-  //       output = _calculatorBrain.calculate(input);
-  //     } 
-  // else {
-  //       input += value;
-  //     }
-  //   });
   setState(() {
     if (value == "AC") {
       input = "";

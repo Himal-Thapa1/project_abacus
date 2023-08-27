@@ -17,23 +17,53 @@ class _homeScreenState extends State<homeScreen> {
   CalculatorBrain _calculatorBrain = CalculatorBrain();
   String input = "";
   String output = "";
+  bool hasError = false;
 
   void onButtonClick(String value) {
-    setState(() {
-      if (value == "AC") {
-        input = "";
-        output = "";
-      } else if (value == "<") {
-        if (input.isNotEmpty) {
-          input = input.substring(0, input.length - 1);
-        }
-      } else if (value == "=") {
-        output = _calculatorBrain.calculate(input);
-      } 
-  else {
-        input += value;
+  //   setState(() {
+  //     if (value == "AC") {
+  //       input = "";
+  //       output = "";
+  //     } else if (value == "<") {
+  //       if (input.isNotEmpty) {
+  //         input = input.substring(0, input.length - 1);
+  //       }
+  //     } else if (value == "=") {
+  //       output = _calculatorBrain.calculate(input);
+  //     } 
+  // else {
+  //       input += value;
+  //     }
+  //   });
+  setState(() {
+    if (value == "AC") {
+      input = "";
+      output = "";
+      hasError = false; // Reset error state
+    } else if (value == "<") {
+      if (input.isNotEmpty) {
+        input = input.substring(0, input.length - 1);
+        hasError = false; // Reset error state
       }
-    });
+    } else if (value == "=") {
+      if (!hasError) {
+        output = _calculatorBrain.calculate(input);
+      } else {
+        output = "Error"; // Show error message in output
+      }
+      hasError = false; // Reset error state
+    } else {
+      // Check for consecutive operators
+      if (value == "+" || value == "-" || value == "*" || value == "/") {
+        if (input.isEmpty || "+-*/".contains(input[input.length - 1])) {
+          hasError = true;
+          return;
+        }
+      }
+      input += value;
+      hasError = false; // Reset error state
+    }
+  });
   }
 
   @override
@@ -80,7 +110,7 @@ class _homeScreenState extends State<homeScreen> {
                     Text(
                       output,
                       style: TextStyle(
-                        color: black,
+                        color: hasError? Colors.red : black,
                         fontSize: 40,
                       ),
                     ),

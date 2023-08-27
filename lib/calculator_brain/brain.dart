@@ -1,3 +1,6 @@
+
+// ignore_for_file: deprecated_member_use
+
 import 'package:petitparser/petitparser.dart';
 
 class CalculatorBrain {
@@ -8,7 +11,7 @@ class CalculatorBrain {
         .map((value) => double.parse(value));
 
     var term = number | (char('(') & ref(() => expression) & char(')')).pick(1);
-
+    
     var multiplication = term
         .separatedBy(char('*').trim(), includeSeparators: false)
         .map((list) => list.reduce((a, b) => a * b));
@@ -30,7 +33,9 @@ class CalculatorBrain {
   }
 
   String calculate(String input) {
-    double result = _evaluateExpression(input);
+        // Replace 'X' with '*' for multiplication
+    String processedInput = input.replaceAll("x", "*");
+    double result = _evaluateExpression(processedInput);
 
     if (result == result.toInt()) {
       return result.toInt().toString();

@@ -29,7 +29,16 @@ class _homeScreenState extends State<homeScreen> {
         }
       } else if (value == "=") {
         output = _calculatorBrain.calculate(input);
-      } else {
+  //     } else if (value == "%") {
+  //       if (input.isNotEmpty) {
+  // // Calculate the percentage value
+  //         double? inputValue = double.tryParse(input);
+  //         double percentageValue = inputValue! / 100.0;
+  //         input = percentageValue.toString();
+  //         output = input; // Display the percentage value in output immediately
+  //       }
+      } 
+  else {
         input += value;
       }
     });

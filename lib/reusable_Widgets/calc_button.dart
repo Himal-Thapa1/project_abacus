@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-Widget calcbutton(String btntxt, Color btncolor, Color txtcolor, Function(String) onButtonClick) {
+Widget numberButton(String btntxt, Color txtcolor, Function(String) onButtonClick) {
   return Container(
-    child: ElevatedButton(
+    child: TextButton(
       onPressed: () {
         onButtonClick(btntxt);
       },
@@ -14,12 +14,29 @@ Widget calcbutton(String btntxt, Color btncolor, Color txtcolor, Function(String
         ),
       ),
       style: ButtonStyle(
-        // backgroundColor: btncolor,
-        backgroundColor: MaterialStatePropertyAll<Color>(btncolor),
-        shape: MaterialStatePropertyAll(CircleBorder()),
         padding: MaterialStatePropertyAll(EdgeInsets.all(15)),
       ),
     ),
   );
 }
 
+Widget calcButton(String btntxt, Color txtcolor, Function(String) onButtonClick) {
+  return Container(
+    child: TextButton(
+      onPressed: () {
+        onButtonClick(btntxt);
+      },
+      child: Text(
+        btntxt,
+        style: TextStyle(
+          fontSize: 30,
+          color: txtcolor,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      style: ButtonStyle(
+        padding: MaterialStatePropertyAll(EdgeInsets.all(15)),
+      ),
+    ),
+  );
+}

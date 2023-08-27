@@ -29,37 +29,30 @@ class _homeScreenState extends State<homeScreen> {
         }
       } else if (value == "=") {
         output = _calculatorBrain.calculate(input);
-  //     } else if (value == "%") {
-  //       if (input.isNotEmpty) {
-  // // Calculate the percentage value
-  //         double? inputValue = double.tryParse(input);
-  //         double percentageValue = inputValue! / 100.0;
-  //         input = percentageValue.toString();
-  //         output = input; // Display the percentage value in output immediately
-  //       }
-      } 
-  else {
+      } else {
         input += value;
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Material(
       child: Scaffold(
-        backgroundColor: black,
+        backgroundColor: white,
         appBar: AppBar(
           title: Text(
             "ABACUS",
             style: GoogleFonts.itim(
               textStyle: TextStyle(
-                color: white,
+                color: black,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          backgroundColor: black,
+          elevation: 0,
+          backgroundColor: white,
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5),
@@ -79,14 +72,14 @@ class _homeScreenState extends State<homeScreen> {
                       input,
                       textAlign: TextAlign.right,
                       style: TextStyle(
-                        color: white,
+                        color: black,
                         fontSize: 40,
                       ),
                     ),
                     Text(
                       output,
                       style: TextStyle(
-                        color: white,
+                        color: black,
                         fontSize: 40,
                       ),
                     ),
@@ -97,9 +90,9 @@ class _homeScreenState extends State<homeScreen> {
                 height: 5,
               ),
               Divider(
-                color: white,
+                color: black,
                 height: 10,
-                thickness: 5,
+                thickness: 2,
                 indent: 25,
                 endIndent: 25,
               ),
@@ -109,10 +102,10 @@ class _homeScreenState extends State<homeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  calcbutton('AC', Colors.grey, black, onButtonClick),
-                  calcbutton('<', Colors.grey, black, onButtonClick),
-                  calcbutton('%', Colors.grey, black, onButtonClick),
-                  calcbutton('/', accentColor, white, onButtonClick),
+                  calcButton('AC', accentColor, onButtonClick),
+                  calcButton('<', accentColor, onButtonClick),
+                  calcButton('/', accentColor, onButtonClick),
+                  calcButton('X', accentColor, onButtonClick),
                 ],
               ),
               SizedBox(
@@ -122,10 +115,10 @@ class _homeScreenState extends State<homeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  calcbutton('7', Colors.grey, black, onButtonClick),
-                  calcbutton('8', Colors.grey, black, onButtonClick),
-                  calcbutton('9', Colors.grey, black, onButtonClick),
-                  calcbutton('X', accentColor, white, onButtonClick),
+                  numberButton('1', black, onButtonClick),
+                  numberButton('2', black, onButtonClick),
+                  numberButton('3', black, onButtonClick),
+                  numberButton('-', accentColor, onButtonClick),
                 ],
               ),
               SizedBox(
@@ -134,53 +127,16 @@ class _homeScreenState extends State<homeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  calcbutton('4', Colors.grey, black, onButtonClick),
-                  calcbutton('5', Colors.grey, black, onButtonClick),
-                  calcbutton('6', Colors.grey, black, onButtonClick),
-                  calcbutton('-', accentColor, white, onButtonClick),
+                  numberButton('4', black, onButtonClick),
+                  numberButton('5', black, onButtonClick),
+                  numberButton('6', black, onButtonClick),
+                  numberButton('+', accentColor, onButtonClick),
                 ],
               ),
               SizedBox(
                 height: 10,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  calcbutton('1', Colors.grey, black, onButtonClick),
-                  calcbutton('2', Colors.grey, black, onButtonClick),
-                  calcbutton('3', Colors.grey, black, onButtonClick),
-                  calcbutton('+', accentColor, white, onButtonClick),
-                ],
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      onButtonClick("0");
-                    },
-                    child: Text(
-                      "0",
-                      textAlign: TextAlign.justify,
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: white,
-                      ),
-                    ),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(Colors.grey),
-                      shape: MaterialStatePropertyAll(StadiumBorder()),
-                      padding: MaterialStatePropertyAll(
-                          EdgeInsets.fromLTRB(30, 14, 128, 14)),
-                    ),
-                  ),
-                  calcbutton('.', Colors.grey, white, onButtonClick),
-                  calcbutton("=", Colors.grey, white, onButtonClick),
-                ],
-              )
+              
             ],
           ),
         ),
@@ -188,3 +144,46 @@ class _homeScreenState extends State<homeScreen> {
     );
   }
 }
+
+
+
+
+
+// Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                 children: [
+//                   numberButton('1', black, onButtonClick),
+//                   numberButton('2', black, onButtonClick),
+//                   numberButton('3', black, onButtonClick),
+//                   numberButton('+', black, onButtonClick),
+//                 ],
+//               ),
+//               SizedBox(
+//                 height: 10,
+//               ),
+//               Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                 children: [
+//                   ElevatedButton(
+//                     onPressed: () {
+//                       onButtonClick("0");
+//                     },
+//                     child: Text(
+//                       "0",
+//                       textAlign: TextAlign.justify,
+//                       style: TextStyle(
+//                         fontSize: 30,
+//                         color: white,
+//                       ),
+//                     ),
+//                     style: ButtonStyle(
+//                       backgroundColor: MaterialStatePropertyAll(Colors.grey),
+//                       shape: MaterialStatePropertyAll(StadiumBorder()),
+//                       padding: MaterialStatePropertyAll(
+//                           EdgeInsets.fromLTRB(30, 14, 128, 14)),
+//                     ),
+//                   ),
+//                   numberButton('.', white, onButtonClick),
+//                   numberButton("=", white, onButtonClick),
+//                 ],
+//               )

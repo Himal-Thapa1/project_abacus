@@ -29,7 +29,8 @@ class _homeScreenState extends State<homeScreen> {
         }
       } else if (value == "=") {
         output = _calculatorBrain.calculate(input);
-      } else {
+      } 
+  else {
         input += value;
       }
     });
@@ -102,10 +103,10 @@ class _homeScreenState extends State<homeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  calcButton('AC', accentColor, onButtonClick),
-                  calcButton('<', accentColor, onButtonClick),
-                  calcButton('/', accentColor, onButtonClick),
-                  calcButton('X', accentColor, onButtonClick),
+                  numberButton('AC', accentColor, onButtonClick),
+                  numberButton('<', accentColor, onButtonClick),
+                  numberButton('/', accentColor, onButtonClick),
+                  numberButton('x', accentColor, onButtonClick),
                 ],
               ),
               SizedBox(
@@ -136,7 +137,33 @@ class _homeScreenState extends State<homeScreen> {
               SizedBox(
                 height: 10,
               ),
-              
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      numberButton("7", black, onButtonClick),
+                      numberButton("00", black, onButtonClick),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      numberButton("8", black, onButtonClick),
+                      numberButton("0", black, onButtonClick),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      numberButton("9", black, onButtonClick),
+                      numberButton(".", black, onButtonClick),
+                    ],
+                  ),
+                  numberButton("=", accentColor, onButtonClick),
+                ],
+              )
             ],
           ),
         ),
@@ -148,42 +175,3 @@ class _homeScreenState extends State<homeScreen> {
 
 
 
-
-// Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                 children: [
-//                   numberButton('1', black, onButtonClick),
-//                   numberButton('2', black, onButtonClick),
-//                   numberButton('3', black, onButtonClick),
-//                   numberButton('+', black, onButtonClick),
-//                 ],
-//               ),
-//               SizedBox(
-//                 height: 10,
-//               ),
-//               Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                 children: [
-//                   ElevatedButton(
-//                     onPressed: () {
-//                       onButtonClick("0");
-//                     },
-//                     child: Text(
-//                       "0",
-//                       textAlign: TextAlign.justify,
-//                       style: TextStyle(
-//                         fontSize: 30,
-//                         color: white,
-//                       ),
-//                     ),
-//                     style: ButtonStyle(
-//                       backgroundColor: MaterialStatePropertyAll(Colors.grey),
-//                       shape: MaterialStatePropertyAll(StadiumBorder()),
-//                       padding: MaterialStatePropertyAll(
-//                           EdgeInsets.fromLTRB(30, 14, 128, 14)),
-//                     ),
-//                   ),
-//                   numberButton('.', white, onButtonClick),
-//                   numberButton("=", white, onButtonClick),
-//                 ],
-//               )

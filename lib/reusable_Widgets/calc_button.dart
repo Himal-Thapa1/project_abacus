@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-Widget calcbutton(String btntxt, Color btncolor, Color txtcolor) {
+Widget calcbutton(String btntxt, Color btncolor, Color txtcolor, Function(String) onButtonClick) {
   return Container(
     child: ElevatedButton(
       onPressed: () {
-        //later adding the function
+        onButtonClick(btntxt);
       },
       child: Text(
         btntxt,
@@ -22,3 +22,4 @@ Widget calcbutton(String btntxt, Color btncolor, Color txtcolor) {
     ),
   );
 }
+

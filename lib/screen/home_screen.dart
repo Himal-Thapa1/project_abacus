@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_abacus/calculator_brain/brain.dart';
 import 'package:project_abacus/constants/color.dart';
 import 'package:project_abacus/reusable_Widgets/calc_button.dart';
 
@@ -13,6 +14,35 @@ class homeScreen extends StatefulWidget {
 }
 
 class _homeScreenState extends State<homeScreen> {
+  CalculatorBrain _calculatorBrain = CalculatorBrain();
+  String input = "";
+  String output = "";
+
+  void onButtonClick(String value) {
+    setState(() {
+      if (value == "AC") {
+        input = "";
+        output = "";
+      } else if (value == "<") {
+        if (input.isNotEmpty) {
+          input = input.substring(0, input.length - 1);
+        }
+      } else if (value == "=") {
+        output = _calculatorBrain.calculate(input);
+  //     } else if (value == "%") {
+  //       if (input.isNotEmpty) {
+  // // Calculate the percentage value
+  //         double? inputValue = double.tryParse(input);
+  //         double percentageValue = inputValue! / 100.0;
+  //         input = percentageValue.toString();
+  //         output = input; // Display the percentage value in output immediately
+  //       }
+      } 
+  else {
+        input += value;
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -46,7 +76,7 @@ class _homeScreenState extends State<homeScreen> {
                   children: [
                     Padding(padding: EdgeInsets.all(10.0)),
                     Text(
-                      "Input",
+                      input,
                       textAlign: TextAlign.right,
                       style: TextStyle(
                         color: white,
@@ -54,7 +84,7 @@ class _homeScreenState extends State<homeScreen> {
                       ),
                     ),
                     Text(
-                      "Output",
+                      output,
                       style: TextStyle(
                         color: white,
                         fontSize: 40,
@@ -79,10 +109,10 @@ class _homeScreenState extends State<homeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  calcbutton('AC', Colors.grey, black),
-                  calcbutton('+/-', Colors.grey, black),
-                  calcbutton('%', Colors.grey, black),
-                  calcbutton('/', accentColor, white),
+                  calcbutton('AC', Colors.grey, black, onButtonClick),
+                  calcbutton('<', Colors.grey, black, onButtonClick),
+                  calcbutton('%', Colors.grey, black, onButtonClick),
+                  calcbutton('/', accentColor, white, onButtonClick),
                 ],
               ),
               SizedBox(
@@ -92,10 +122,10 @@ class _homeScreenState extends State<homeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  calcbutton('7', Colors.grey, black),
-                  calcbutton('8', Colors.grey, black),
-                  calcbutton('9', Colors.grey, black),
-                  calcbutton('X', accentColor, white),
+                  calcbutton('7', Colors.grey, black, onButtonClick),
+                  calcbutton('8', Colors.grey, black, onButtonClick),
+                  calcbutton('9', Colors.grey, black, onButtonClick),
+                  calcbutton('X', accentColor, white, onButtonClick),
                 ],
               ),
               SizedBox(
@@ -104,10 +134,10 @@ class _homeScreenState extends State<homeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  calcbutton('4', Colors.grey, black),
-                  calcbutton('5', Colors.grey, black),
-                  calcbutton('6', Colors.grey, black),
-                  calcbutton('-', accentColor, white),
+                  calcbutton('4', Colors.grey, black, onButtonClick),
+                  calcbutton('5', Colors.grey, black, onButtonClick),
+                  calcbutton('6', Colors.grey, black, onButtonClick),
+                  calcbutton('-', accentColor, white, onButtonClick),
                 ],
               ),
               SizedBox(
@@ -116,10 +146,10 @@ class _homeScreenState extends State<homeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  calcbutton('1', Colors.grey, black),
-                  calcbutton('2', Colors.grey, black),
-                  calcbutton('3', Colors.grey, black),
-                  calcbutton('+', accentColor, white),
+                  calcbutton('1', Colors.grey, black, onButtonClick),
+                  calcbutton('2', Colors.grey, black, onButtonClick),
+                  calcbutton('3', Colors.grey, black, onButtonClick),
+                  calcbutton('+', accentColor, white, onButtonClick),
                 ],
               ),
               SizedBox(
@@ -130,7 +160,7 @@ class _homeScreenState extends State<homeScreen> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      //later wii add the function
+                      onButtonClick("0");
                     },
                     child: Text(
                       "0",
@@ -147,8 +177,8 @@ class _homeScreenState extends State<homeScreen> {
                           EdgeInsets.fromLTRB(30, 14, 128, 14)),
                     ),
                   ),
-                  calcbutton('.', Colors.grey, white),
-                  calcbutton("=", Colors.grey, white),
+                  calcbutton('.', Colors.grey, white, onButtonClick),
+                  calcbutton("=", Colors.grey, white, onButtonClick),
                 ],
               )
             ],
